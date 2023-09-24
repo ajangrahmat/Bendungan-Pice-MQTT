@@ -55,11 +55,11 @@ void loop(){
   // Serial.println(nilaiSensor);
 
   //Logika Lampu Otomatis ------------------
-  if( nilaiSensor > 2000 ){
-    digitalWrite(pinLed, HIGH);
-  }else{
-    digitalWrite(pinLed, LOW);
-  }
+  // if( nilaiSensor > 2000 ){
+  //   digitalWrite(pinLed, HIGH);
+  // }else{
+  //   digitalWrite(pinLed, LOW);
+  // }
 
   //Koding pengiriman ( Publish ) ----------
   if(millis() - zero >= jeda){
