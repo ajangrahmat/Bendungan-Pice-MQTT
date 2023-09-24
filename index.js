@@ -38,10 +38,22 @@ client.on('connect', () => {
     client.subscribe(topic_ldr, { qos: 0 })
 })
 
-// Publish
-client.publish(topic_led, 'ws connection demo...!', { qos: 0, retain: false })
+
+function led_on() {
+    client.publish(topic_led, 'ON', { qos: 0, retain: false })
+}
+
+function led_off() {
+    client.publish(topic_led, 'OFF', { qos: 0, retain: false })
+}
 
 //Ketika menerima pesan----------------------------------------------   
 client.on('message', (topic, message, packet) => {
-  console.log(`Received Message: ${message.toString()} On topic: ${topic}`)
+    console.log(`Received Message: ${message.toString()} On topic: ${topic}`)
+
+    //Menampilkan Nilai LDR ke HTML
+    if (topic == topic_ldr) {
+        document.getElementById("ldr").innerHTML = message.toString();
+    }
+
 })
